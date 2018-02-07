@@ -1,4 +1,4 @@
-package com.harry.javautils;
+package com.harry;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
