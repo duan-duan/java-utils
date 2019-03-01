@@ -145,9 +145,6 @@ public final class DateUtil2 {
 
     /**
      * 获取当前时间上月第一天
-     * @param date
-     * @return
-     * @throws ParseException
      */
     public static String getLastMonth (Date date) {
         Calendar cal_1=Calendar.getInstance();
