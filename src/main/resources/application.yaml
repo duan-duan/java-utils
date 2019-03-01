@@ -1,0 +1,17 @@
+jpush:
+    keySecrets:
+    -
+        appkey: 4f59cf05cf7e68ffb66b0868
+        masterSecret: 5f8f42863c284f71ad0259e0
+    -
+        appkey: 38ad438f877ddd419ccb03b1
+        masterSecret: e967a902f22259fed74f155c
+    -
+        appkey: 181e2c9095c234ab26280179
+        masterSecret: 09337f9db23e7ca55823540e
+    -
+        appkey: 7eb72101247a881cac1cca5c
+        masterSecret: e349fbf2de3d3169bf015643
+
+    apnsProduction: false
+    sound: phonering.mp3

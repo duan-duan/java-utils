@@ -123,6 +123,113 @@ public final class DateUtil2 {
     }
 
     /**
+     * 获取当前月的第一天
+     */
+    public static String getThisMonth () {
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.add(Calendar.MONTH, 0);
+
+        calendar.set(Calendar.DAY_OF_MONTH, 1);
+
+
+        StringBuffer time = new StringBuffer();
+
+        String first = YMD.get().format(calendar.getTime());
+
+        time.append(first).append(" ").append("00:00:00");
+
+        return time.toString();
+
+    }
+
+    /**
+     * 获取当前时间上月第一天
+     * @param date
+     * @return
+     * @throws ParseException
+     */
+    public static String getLastMonth (Date date) {
+        Calendar cal_1=Calendar.getInstance();
+        cal_1.add(Calendar.MONTH, -1);
+
+        //设置为1号,当前日期既为本月第一天
+        cal_1.set(Calendar.DAY_OF_MONTH,1);
+        String firstDay = DATE_FORMAT.get().format(cal_1.getTime());
+
+        return firstDay;
+    }
+
+    /**
+     * 获取昨天凌晨时间
+     * @return
+     */
+    public static String getYesterdayStart () {
+
+        Date date = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(calendar.DATE, -1);
+
+        date = calendar.getTime();
+
+        StringBuffer time = new StringBuffer();
+
+        String dateString  = YMD.get().format(date);
+
+        time.append(dateString).append(" ").append("00:00:00");
+
+        return time.toString();
+
+    }
+
+    /**
+     * 获取昨天最后时间
+     * @return
+     */
+    public static String getYesterdayEnd () {
+
+        Date date = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(calendar.DATE, -1);
+
+        date = calendar.getTime();
+
+
+        StringBuffer time = new StringBuffer();
+
+        String dateString  = YMD.get().format(date);
+
+        time.append(dateString).append(" ").append("23:59:59");
+
+        return time.toString();
+    }
+
+    /**
+     * 获取昨天最后时间
+     * @return
+     */
+    public static String getYesterdayMark () {
+
+        Date date = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(calendar.DATE, -1);
+
+        date = calendar.getTime();
+
+        StringBuffer time = new StringBuffer();
+
+        String dateString  = YMD.get().format(date);
+
+        time.append(dateString).append(" ").append("23:00:00");
+
+        return time.toString();
+    }
+
+
+    /**
      * 测试
      *
      * @param args

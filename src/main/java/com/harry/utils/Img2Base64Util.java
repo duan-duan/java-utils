@@ -15,7 +15,6 @@ import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.hxhc365.mcmp.core.base.RandomStr;
 
 
 /**
@@ -42,7 +41,7 @@ public class Img2Base64Util {
 //        System.out.println(imgbese);
 //        String imgFilePath = "C:\\Users\\zhangte\\Desktop\\jihezhifu\\身份证正面1.jpg";//新生成的图片
 //        generateImage(imgBaseStr,imgFilePath);
-    	
+
 //        String imgFile = "d:\\yinhangka.jpg";//待处理的图片
 //        String imgbese=getImgStr(imgFile);
 //        System.out.println(imgbese.length());
@@ -57,40 +56,40 @@ public class Img2Base64Util {
      */
     public static String getImgStr(String imgFile){
         //将图片文件转化为字节数组字符串，并对其进行Base64编码处理
-  
-        
+
+
         InputStream in = null;
         byte[] data = null;
         //读取图片字节数组
-        try 
+        try
         {
-            in = new FileInputStream(imgFile);        
+            in = new FileInputStream(imgFile);
             data = new byte[in.available()];
             in.read(data);
             in.close();
-        } 
-        catch (IOException e) 
+        }
+        catch (IOException e)
         {
             e.printStackTrace();
         }
         return new String(Base64.encodeBase64(data));
     }
-    
+
     public static String getImgBaseStr(String imgPath){
     	log.info("imgPath : "+imgPath);
     	byte[] imageBytes = getContentFromFile(imgPath);
 
-    	byte[] compressPicForScale = compressPicForScale(imageBytes, 36,RandomStr.getRandomNum(4));
+    	byte[] compressPicForScale = compressPicForScale(imageBytes, 36,"abcd");
      	log.info("compressPicForScale : "+compressPicForScale);
 
     	String imgBaseStr = new String(Base64.encodeBase64(compressPicForScale));
-    	
+
     	//String imgBaseStr = getImgStr(imgPath);
     	log.info("imgBaseStr : "+imgBaseStr);
     	log.info("imgBaseStrLength : "+imgBaseStr.length());
         return imgBaseStr;
     }
-    
+
     /**
      * 对字节数组字符串进行Base64解码并生成图片
      * @param imgStr 图片数据
@@ -101,8 +100,8 @@ public class Img2Base64Util {
         //
         if (imgStr == null) //图像数据为空
             return false;
-     
-        try 
+
+        try
         {
             //Base64解码
             byte[] b = Base64.decodeBase64(imgStr);
@@ -115,19 +114,19 @@ public class Img2Base64Util {
             }
             //生成jpeg图片
 
-            OutputStream out = new FileOutputStream(imgFilePath);    
+            OutputStream out = new FileOutputStream(imgFilePath);
             out.write(b);
             out.flush();
             out.close();
             return true;
-        } 
-        catch (Exception e) 
+        }
+        catch (Exception e)
         {
             return false;
         }
     }
-    
-    
+
+
     /**
 	 * 压缩图片的方法
 	 * @param imageBytes
@@ -158,7 +157,7 @@ public class Img2Base64Util {
         }
         return imageBytes;
     }
- 
+
     /**
      * 自动调节精度(经验数值)
      *
@@ -197,5 +196,5 @@ public class Img2Base64Util {
    		}
    		return b;
    	}
-	
+
 }
